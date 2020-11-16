@@ -25,4 +25,24 @@ router.get('/:id', async (req: express.Request, res: express.Response) => {
     }
 })
 
+router.post('/', async (req: express.Request, res: express.Response) => {
+    try {
+        const newAuthorName = req.body.name;
+        const newTitle = req.body.title;
+        const newBlogContent = req.body.content;
+
+        const newAuthor = await db.Authors.insert(newAuthorName);
+        const newAuthorId = newAuthor.insertId;
+
+        const newBlog = await db.Blogs.insert(newTitle, newBlogContent, newAuthorId);
+        res.status(200).send(`
+        author created with id: ${newAuthorId}
+        blog created with id: ${newBlog.insertId}
+        `);
+    } catch(err) {
+        console.log(err);
+        res.status(500).send(err);
+    }
+})
+
 export default router;

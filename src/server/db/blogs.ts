@@ -15,11 +15,15 @@ const one = async (id: number) => Query(`
     WHERE blogs.id = ?;
 `, [id]);
 
-
+const insert = (title: string, content: string, authorid: number) => Query(`
+    INSERT INTO blogs (title, content, authorid)
+    VALUES (?, ?, ?);
+`,[title, content, authorid])
 
 
 export default {
     all,
     one,
+    insert,
 
 }
