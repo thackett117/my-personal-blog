@@ -4,4 +4,5 @@ export interface blog {
     content: string,
     _created: string,
     authorid: number,
+    name: string,
 }

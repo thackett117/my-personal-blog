@@ -1,18 +1,25 @@
-import { Connection } from './index';
+import { Connection, Query } from './index';
 
-export const all = async () => {
-    return new Promise((resolve, reject) => {
-        Connection.query('SELECT * from blogs', (err, results) => {
-            if(err) {
-                return reject(err);
-            }
-            resolve(results);
-        });
+const all = async () => Query(`
+    SELECT blogs.id, blogs.title, blogs.content, blogs._created, authors.name 
+    FROM blogs 
+    JOIN authors 
+    ON blogs.authorid = authors.id;
+`);
 
-    });
-}
+const one = async (id: number) => Query(`
+    SELECT blogs.id, blogs.title, blogs.content, blogs._created, authors.name
+    FROM blogs
+    JOIN authors
+    ON blogs.authorid = authors.id
+    WHERE blogs.id = ?;
+`, [id]);
+
+
+
 
 export default {
     all,
+    one,
 
 }
