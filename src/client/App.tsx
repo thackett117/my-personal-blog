@@ -1,27 +1,21 @@
-import * as React from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Home from './Components/Home';
+import NavBar from './Components/NavBar';
 
-const App = (props: AppProps) => {
-	const [greeting, setGreeting] = React.useState<string>('');
-
-	React.useEffect(() => {
-		(async () => {
-			try {
-				const res = await fetch('/api/sup');
-				const greeting = await res.json();
-				setGreeting(greeting);
-			} catch (error) {
-				console.log(error);
-			}
-		})();
-	}, []);
-
+const App: React.FC<IAppProps> = () => {
 	return (
-		<div className="min-vh-100 d-flex justify-content-center align-items-center">
-			<h1 className="display-1">Sup {greeting}!</h1>
-		</div>
-	);
-};
+		<Router>
+			<NavBar />
+			<Switch>
+				<Route exact path="/" component={Home} />
+				<Route exact path="/api/blogs/:id/" />
+				<Route exact path="/api/blogs/add" />
+			</Switch>
+		</Router>
+	)
+}
 
-interface AppProps {}
+interface IAppProps { };
 
 export default App;
