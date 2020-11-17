@@ -11,7 +11,7 @@ const Navbar: React.FC<INavbarProps> = () => {
                         <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
                     </li>
                     <li className="nav-item active">
-                        <Link className="nav-link" to="/api/blogs/add">Add Blog Post</Link>
+                        <Link className="nav-link" to="/blogs/add">Add Blog Post</Link>
                     </li>
                 </ul>
             </div>

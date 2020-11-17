@@ -3,6 +3,7 @@ import config from '../config';
 
 import Blogs from './blogs';
 import Authors from './authors';
+import Tags from './tags';
 
 export const Connection = mysql.createConnection(config.mysql);
 
@@ -23,5 +24,6 @@ export const Query = (query: string, values?: Array<string | number>) => {
 export default {
     Blogs,
     Authors,
+    Tags,
 
 };
