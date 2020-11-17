@@ -45,4 +45,31 @@ router.post('/', async (req: express.Request, res: express.Response) => {
     }
 })
 
+router.put('/:id', async (req: express.Request, res: express.Response) => {
+    try {
+        const id: number = Number(req.params.id);
+        const newBlogContent = req.body.content;
+
+        await db.Blogs.update(newBlogContent, id);
+        res.status(200).send(`Updated blog ${id}`)
+
+    } catch(err) {
+        console.log(err);
+        res.status(500).send(err);
+    }
+});
+
+router.delete('/:id', async (req: express.Request, res: express.Response) => {
+    try {
+        const id: number = Number(req.params.id);
+
+        await db.Blogs.destroy(id);
+
+        res.send(`blog ${id} was deleted`);
+    } catch(err) {
+        console.log(err);
+        res.status(500).send(err)
+    }
+})
+
 export default router;
