@@ -56,9 +56,9 @@ const AddBlog: React.FC<IAddBlogProps> = (props: IAddBlogProps) => {
                             </div>
                             <select className="custom-select" id="inputGroupSelect01">
                                 <option selected>Choose...</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option value="1">Coding</option>
+                                <option value="2">Video Games</option>
+                                <option value="3">Random</option>
                             </select>
                         </div>
                     </div>

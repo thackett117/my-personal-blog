@@ -7,6 +7,22 @@ const all = async () => Query(`
     ON blogs.authorid = authors.id;
 `);
 
+// SELECT 
+//         blogs.id, 
+//         blogs.title, 
+//         blogs.content, 
+//         blogs._created, 
+//         authors.name as author, 
+//         blogtags.tagid, 
+//         tags.name as tagname
+//     FROM blogs 
+//     JOIN authors 
+//     ON blogs.authorid = authors.id
+//     JOIN blogtags
+//     ON blogs.id = blogtags.blogid
+//     JOIN tags
+//     ON blogtags.tagid = tags.id;
+
 const one = async (id: number) => Query(`
     SELECT blogs.id, blogs.title, blogs.content, blogs._created, authors.name
     FROM blogs

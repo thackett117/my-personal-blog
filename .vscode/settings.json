@@ -3,6 +3,7 @@
         "authorid",
         "blogid",
         "blogtags",
-        "setblogs"
+        "setblogs",
+        "tagid"
     ]
 }

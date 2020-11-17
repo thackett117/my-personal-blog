@@ -36,6 +36,10 @@ router.post('/', async (req: express.Request, res: express.Response) => {
         const newAuthorId = newAuthor.insertId;
 
         const newBlog = await db.Blogs.insert(newTitle, newBlogContent, newAuthorId);
+        req.body.tags.forEach(async (tag) => {
+            const tagId = await db.Tags.findId(tag.id);
+            await db.BlogTags.insert(newBlog.insertId, tagId);
+        })
         res.status(200).send(`
         author created with id: ${newAuthorId}
         blog created with id: ${newBlog.insertId}

@@ -5,4 +5,6 @@ export interface blog {
     _created?: string,
     authorid?: number,
     name?: string,
+    author?: string,
+    tagname?: string,
 }
