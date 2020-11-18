@@ -16,7 +16,7 @@ const BlogAdmin: React.FC<IBlogAdminProps> = (props: IBlogAdminProps) => {
                 let res = await fetch(`/api/blogs/${props.match.params.id}`);
                 let blog = await res.json();
                 setBlog(blog);
-            } catch(err) {
+            } catch(err) { 
                 console.log(err)
             }
         })();
@@ -45,8 +45,8 @@ const BlogAdmin: React.FC<IBlogAdminProps> = (props: IBlogAdminProps) => {
     const onMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => setBlog({
         id: blog.id,
         name: blog.name,
-        title: blog.title,
-        content: e.target.value
+        content: e.target.value,
+        title: blog.title
     });
 
     return (
