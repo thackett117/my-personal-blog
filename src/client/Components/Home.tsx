@@ -28,7 +28,7 @@ const Home: React.FC<IHomeProps> = () => {
                 <div key={blog.id} className="card shadow-lg m-2">
                     <div className="card-body">
                         <h5 className="card-title">{blog.title}</h5>
-                        <p className="card-text">Created by: {blog.author}</p>
+                        <p className="card-text">Created by: {blog.name}</p>
                         <p className="card-text">Created on: {blog._created}</p>
                         <Link to={`/blogs/${blog.id}/`}>
                             <button className="btn btn-sm btn-outline-dark float-right">View Blog</button>

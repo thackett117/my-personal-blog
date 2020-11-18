@@ -68,7 +68,7 @@ router.delete('/:id', async (req: express.Request, res: express.Response) => {
     try {
         const id: number = Number(req.params.id);
 
-        await db.Tags.destroy(id);
+        await db.BlogTags.destroy(id);
         await db.Blogs.destroy(id);
 
         res.send(`blog ${id} was deleted`);
